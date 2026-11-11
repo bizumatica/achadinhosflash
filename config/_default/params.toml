@@ -1,0 +1,31 @@
+colorScheme = "fire"
+defaultTheme = "light"
+showAppearanceSwitcher = true
+customCSS = ["css/custom.css"]
+
+# Desativa recurso legados/problemáticos da 404 no Hugo 0.160+
+[page404]
+  enableQuotes = false
+
+# SEO & Meta Globais
+description = "As melhores promoções relâmpago, cupons verificados e achadinhos das maiores lojas online."
+author = { name = "Equipe Achadinhos Flash" }
+
+[header]
+  layout = "basic"
+  showTitle = true
+
+[homepage]
+  layout = "background"
+  showRecent = true
+  cardView = true
+  cardViewScreenWidth = false
+
+[article]
+  showDate = true
+  showViews = false
+  showReadingTime = false
+  showTableOfContents = true
+  showAuthor = false
+  showTaxonomies = true
+  sharingLinks = ["whatsapp", "telegram", "twitter"]

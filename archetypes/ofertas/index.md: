@@ -1,0 +1,30 @@
+---
+title: "{{ replace .Name "-" " " | title }}"
+date: {{ .Date }}
+draft: true
+description: "Confira a promoção de {{ replace .Name "-" " " | title }} com desconto exclusivo no Achadinhos Flash."
+categories: ["Eletrônicos"]
+tags: ["Promoção Relâmpago"]
+stores: ["Amazon"]
+price_original: "R$ 0,00"
+price_promo: "R$ 0,00"
+coupon_code: "CUPOM10"
+affiliate_link: "https://"
+---
+
+{{< lead >}}
+🔥 **Achadinho imperdível:** `{{ .Params.price_promo }}` (De: ~~{{ .Params.price_original }}~~).
+{{< /lead >}}
+
+<!-- Detalhes do produto aqui em 1 ou 2 parágrafos -->
+
+## Como resgatar o desconto
+
+1. Clique no botão abaixo para acessar a loja.
+2. Adicione o produto ao carrinho.
+3. Insira o cupom `{{ .Params.coupon_code }}` na tela de pagamento.
+
+[🛒 Garantir Oferta na {{ index .Params.stores 0 }}]({{ .Params.affiliate_link }}){ .btn-affiliate target="_blank" rel="nofollow noopener referrer" }
+
+---
+*Os preços e cupons podem sofrer alterações a qualquer momento pelas lojas parceiras. Verifique o valor final antes de fechar a compra.*

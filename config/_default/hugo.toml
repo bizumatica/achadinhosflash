@@ -1,0 +1,17 @@
+baseURL = 'https://achadinhosflash.net.br/'
+locale = 'pt-br'
+defaultContentLanguage = 'pt-br'
+title = 'Achadinhos Flash'
+theme = 'blowfish'
+
+enableRobotsTXT = true
+paginate = 15
+
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+  store = 'stores'
+
+[module]
+  [module.imports]
+    path = "blowfish"

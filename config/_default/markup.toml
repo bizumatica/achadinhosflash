@@ -1,0 +1,11 @@
+[goldmark]
+  [goldmark.renderer]
+    unsafe = true
+  [goldmark.parser]
+    [goldmark.parser.attribute]
+      block = true
+      title = true
+
+[highlight]
+  noClasses = false
+  style = "github"

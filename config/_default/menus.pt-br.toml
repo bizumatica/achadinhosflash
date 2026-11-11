@@ -1,0 +1,14 @@
+[[main]]
+  name = "Todas as Ofertas"
+  pageRef = "ofertas"
+  weight = 10
+
+[[main]]
+  name = "Lojas"
+  pageRef = "stores"
+  weight = 20
+
+[[main]]
+  name = "Categorias"
+  pageRef = "categories"
+  weight = 30
