@@ -2,10 +2,11 @@ baseURL = 'https://achadinhosflash.net.br/'
 locale = 'pt-br'
 defaultContentLanguage = 'pt-br'
 title = 'Achadinhos Flash'
-theme = 'blowfish'
 
 enableRobotsTXT = true
-paginate = 15
+
+[pagination]
+  pagerSize = 15
 
 [taxonomies]
   category = 'categories'
@@ -13,5 +14,51 @@ paginate = 15
   store = 'stores'
 
 [module]
-  [module.imports]
+  # Montagens do seu projeto local (precedência máxima)
+  [[module.mounts]]
+    source = "content"
+    target = "content"
+
+  [[module.mounts]]
+    source = "layouts"
+    target = "layouts"
+
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+
+  [[module.mounts]]
+    source = "static"
+    target = "static"
+
+  [[module.mounts]]
+    source = "archetypes"
+    target = "archetypes"
+
+  [[module.mounts]]
+    source = "data"
+    target = "data"
+
+  # Importação seletiva do Blowfish (exclui data/ para evitar o conflito de contributors.json no Hugo v0.167+)
+  [[module.imports]]
     path = "blowfish"
+
+    [[module.imports.mounts]]
+      source = "layouts"
+      target = "layouts"
+
+    [[module.imports.mounts]]
+      source = "assets"
+      target = "assets"
+
+    [[module.imports.mounts]]
+      source = "i18n"
+      target = "i18n"
+
+    [[module.imports.mounts]]
+      source = "archetypes"
+      target = "archetypes"
+
+    [[module.imports.mounts]]
+      source = "static"
+      target = "static"

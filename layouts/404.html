@@ -1,0 +1,73 @@
+{{ define "main" }}
+  {{- $ofertasPage := site.GetPage "/ofertas" -}}
+  {{- $destinoURL := site.Home.RelPermalink -}}
+  {{- if $ofertasPage -}}
+    {{- $destinoURL = $ofertasPage.RelPermalink -}}
+  {{- end -}}
+
+  {{- $recentes := first 3 (where site.RegularPages "Section" "ofertas") -}}
+
+  <section class="flex flex-col items-center justify-center py-12 text-center" aria-labelledby="error-404-title">
+    <span class="badge-discount mb-4">Erro 404</span>
+
+    <h1 id="error-404-title" class="mb-3 text-3xl sm:text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      Ops! Essa oferta voou ou o link mudou.
+    </h1>
+
+    <p class="max-w-lg mb-8 text-base sm:text-lg text-neutral-600 dark:text-neutral-400">
+      Promoções relâmpago acabam rápido ou o endereço digitado não existe mais. Explore os garimpos ativos abaixo ou acesse nossa vitrine completa:
+    </p>
+
+    <div class="flex flex-wrap items-center justify-center gap-4 mb-12">
+      <a href="{{ $destinoURL }}" class="btn-affiliate mt-0 mb-0">
+        <span aria-hidden="true">⚡</span> Ver Todas as Ofertas
+      </a>
+      <a href="{{ site.Home.RelPermalink }}" class="px-6 py-4 text-base font-semibold text-neutral-700 dark:text-neutral-200 bg-neutral-200/70 hover:bg-neutral-300/70 dark:bg-neutral-800 dark:hover:bg-neutral-700 rounded-xl transition-colors no-underline">
+        Ir para o Início
+      </a>
+    </div>
+
+    {{- with $recentes }}
+      <div class="w-full max-w-4xl pt-8 border-t border-neutral-200 dark:border-neutral-800 text-left">
+        <h2 class="mb-6 text-xl font-bold text-neutral-900 dark:text-neutral text-center">
+          <span aria-hidden="true">🔥</span> Garimpos Recentes Ainda no Ar
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {{- range . }}
+            <a href="{{ .RelPermalink }}" class="group block p-4 rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/60 hover:border-primary-500 transition-colors no-underline">
+              {{- $img := .Resources.GetMatch "feature*" -}}
+              {{- if $img }}
+                {{- $thumb := $img.Fill "400x260 Center webp q80" -}}
+                <img
+                  src="{{ $thumb.RelPermalink }}"
+                  alt="{{ .Title }}"
+                  width="{{ $thumb.Width }}"
+                  height="{{ $thumb.Height }}"
+                  loading="lazy"
+                  class="w-full h-36 object-cover rounded-xl mb-3"
+                >
+              {{- end }}
+
+              {{- with .Params.stores }}
+                <span class="inline-block text-[11px] font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400 mb-1">
+                  {{ index . 0 }}
+                </span>
+              {{- end }}
+
+              <h3 class="text-base font-bold text-neutral-900 dark:text-neutral group-hover:text-primary-600 dark:group-hover:text-primary-400 line-clamp-2 m-0">
+                {{ .Title }}
+              </h3>
+
+              {{- with .Params.preco_por }}
+                <p class="mt-2 text-lg font-extrabold text-primary-600 dark:text-primary-400 m-0">
+                  {{ . }}
+                </p>
+              {{- end }}
+            </a>
+          {{- end }}
+        </div>
+      </div>
+    {{- end }}
+  </section>
+{{ end }}

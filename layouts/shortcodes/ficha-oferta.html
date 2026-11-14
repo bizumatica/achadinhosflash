@@ -1,0 +1,52 @@
+{{- $precoDe := .Page.Params.preco_de -}}
+{{- $precoPor := .Page.Params.preco_por -}}
+{{- $cupom := .Page.Params.cupom -}}
+{{- $link := .Page.Params.link_afiliado -}}
+{{- $loja := "" -}}
+{{- with .Page.Params.stores -}}
+  {{- $loja = index . 0 -}}
+{{- end -}}
+
+<div class="my-6 p-5 rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/60 shadow-sm">
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+    <span class="badge-discount mb-0">⚡ Garimpo Verificado</span>
+    {{- with $loja }}
+      <span class="text-xs font-semibold uppercase tracking-wider px-2.5 py-1 rounded-md bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200">
+        Loja: {{ . }}
+      </span>
+    {{- end }}
+  </div>
+
+  <div class="my-3">
+    {{- if and $precoDe (ne $precoDe "") (ne $precoDe "R$ 0,00") }}
+      <p class="text-sm text-neutral-500 dark:text-neutral-400 m-0">
+        De: <del>{{ $precoDe }}</del>
+      </p>
+    {{- end }}
+
+    {{- with $precoPor }}
+      <p class="text-2xl sm:text-3xl font-extrabold text-primary-600 dark:text-primary-400 m-0">
+        Por: {{ . }}
+      </p>
+    {{- end }}
+  </div>
+
+  {{- if and $cupom (ne $cupom "") }}
+    <div class="my-4 p-3 rounded-xl border-2 border-dashed border-primary-500 bg-primary-50/50 dark:bg-primary-950/30 flex items-center justify-between">
+      <span class="text-sm font-medium">🎟️ Use o cupom:</span>
+      <code class="text-base font-black tracking-widest text-primary-700 dark:text-primary-300 select-all px-2 py-0.5 bg-white dark:bg-neutral-900 rounded">
+        {{ $cupom }}
+      </code>
+    </div>
+  {{- end }}
+
+  {{- with $link }}
+    <a href="{{ . }}" target="_blank" rel="nofollow sponsored noopener" class="btn-affiliate mt-4 mb-0">
+      🛒 Conferir Oferta{{ with $loja }} ({{ . }}){{ end }}
+    </a>
+  {{- end }}
+
+  <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-3 mb-0">
+    * Preço e estoque sujeitos a alteração sem aviso prévio pela loja parceira.
+  </p>
+</div>

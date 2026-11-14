@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Fundo circular vibrante (Laranja Oferta) -->
+  <circle cx="32" cy="32" r="30" fill="#ea580c" />
+  
+  <!-- Silhueta do Peixe (Corpo + Cauda) -->
+  <path d="M48 32c0-9-7.5-16-17-16-6.5 0-12 3.3-14.8 8.3L8 19v26l8.2-5.3C19 44.7 24.5 48 31 48c9.5 0 17-7 17-16z" fill="#ffffff" />
+  
+  <!-- Olho do Peixe -->
+  <circle cx="40" cy="27" r="2.5" fill="#1e293b" />
+  
+  <!-- Raio "Flash" vazado/destacado no corpo do peixe -->
+  <path d="M32 20l-7 13h6l-2 11 9-14h-6l2-10z" fill="#facc15" stroke="#ea580c" stroke-width="1.2" stroke-linejoin="round" />
+</svg>

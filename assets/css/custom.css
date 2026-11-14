@@ -6,3 +6,30 @@
 .badge-discount {
   @apply inline-block px-3 py-1 text-xs font-black text-red-700 bg-red-100 dark:bg-red-950 dark:text-red-300 rounded-md uppercase tracking-wider mb-2;
 }
+/* Sobrescrita das variáveis RGB nativas do Blowfish */
+:root {
+  /* Tons neutros (fundo e texto no modo claro/escuro) - Opcional */
+  /* --color-neutral: 255, 255, 255; */
+
+  /* Paleta Primária (Ex: Laranja/Vermelho vibrante para urgência de ofertas) */
+  --color-primary-50: 255, 247, 237;
+  --color-primary-100: 255, 237, 213;
+  --color-primary-200: 254, 215, 170;
+  --color-primary-300: 253, 186, 116;
+  --color-primary-400: 251, 146, 60;
+  --color-primary-500: 249, 115, 22;  /* Cor principal */
+  --color-primary-600: 234, 88, 12;   /* Hover e botões (.btn-affiliate) */
+  --color-primary-700: 194, 65, 12;
+  --color-primary-800: 154, 52, 18;
+  --color-primary-900: 124, 45, 18;
+
+  /* Paleta Secundária (Destaques complementares e tags) */
+  --color-secondary-500: 16, 185, 129; /* Verde esmeralda para economia/desconto */
+  --color-secondary-600: 5, 150, 105;
+  --color-secondary-700: 4, 120, 87;
+}
+
+/* Utilitários de Afiliados usando a paleta customizada */
+.btn-affiliate {
+  @apply block w-full sm:w-max px-8 py-4 mt-6 mx-auto sm:mx-0 text-lg font-bold text-white bg-primary-600 hover:bg-primary-700 active:scale-95 rounded-xl shadow-lg transition-transform text-center no-underline !important;
+}

@@ -1,13 +1,12 @@
-colorScheme = "fire"
-defaultTheme = "light"
-showAppearanceSwitcher = true
+logo = "img/logo.svg"
+colorScheme = "slate"
+defaultAppearance = "light"
+autoSwitchAppearance = false
 customCSS = ["css/custom.css"]
 
-# Desativa recurso legados/problemáticos da 404 no Hugo 0.160+
 [page404]
   enableQuotes = false
 
-# SEO & Meta Globais
 description = "As melhores promoções relâmpago, cupons verificados e achadinhos das maiores lojas online."
 author = { name = "Equipe Achadinhos Flash" }
 
@@ -16,10 +15,19 @@ author = { name = "Equipe Achadinhos Flash" }
   showTitle = true
 
 [homepage]
-  layout = "background"
+  layout = "page"
   showRecent = true
+  showRecentItems = 12
   cardView = true
   cardViewScreenWidth = false
+
+# Controla a página /ofertas, /categories e /stores
+[list]
+  showCards = true
+  groupByYear = false
+  cardView = true
+  cardViewScreenWidth = false
+  showSummary = false
 
 [article]
   showDate = true
