@@ -31,10 +31,12 @@ author = { name = "Equipe Achadinhos Flash" }
   showSummary = false
 
 [article]
+  showHero = true
+  heroStyle = "basic"
   showDate = true
   showViews = false
   showReadingTime = false
   showTableOfContents = true
   showAuthor = false
   showTaxonomies = true
-  sharingLinks = ["whatsapp", "telegram", "twitter"]
+  sharingLinks = ["whatsapp", "telegram", "pinterest"]

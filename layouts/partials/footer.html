@@ -1,0 +1,66 @@
+<footer id="site-footer" class="py-10 print:hidden">
+  {{- $institucionais := slice -}}
+  {{- $sociais := slice -}}
+  {{- range site.Menus.footer -}}
+    {{- if .Pre -}}
+      {{- $sociais = $sociais | append . -}}
+    {{- else -}}
+      {{- $institucionais = $institucionais | append . -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- with $institucionais }}
+    <nav class="flex flex-row pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400">
+      <ul class="flex flex-col list-none sm:flex-row">
+        {{- range . }}
+          <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+            <a
+              class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center"
+              href="{{ .URL }}"
+              title="{{ .Title | default .Name }}"
+            >
+              {{ .Name | markdownify }}
+            </a>
+          </li>
+        {{- end }}
+      </ul>
+    </nav>
+  {{- end }}
+
+  {{- with $sociais }}
+    <div class="flex flex-wrap items-center gap-4 pb-6 text-neutral-500 dark:text-neutral-400">
+      {{- range . }}
+        <a
+          href="{{ .URL }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="{{ .Title | default .Name }}"
+          title="{{ .Title | default .Name }}"
+          class="inline-flex items-center justify-center p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-neutral-200/70 dark:hover:bg-neutral-700 transition-colors"
+        >
+          <span class="w-5 h-5 inline-block">
+            {{- partial "icon.html" .Pre -}}
+          </span>
+        </a>
+      {{- end }}
+    </div>
+  {{- end }}
+
+  <div class="flex items-center justify-between">
+    {{- if site.Params.footer.showCopyright | default true }}
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+        {{- with replace site.Copyright "{ year }" now.Year }}
+          {{ . | markdownify }}
+        {{- else }}
+          &copy; {{ now.Year }} {{ site.Title }}
+        {{- end }}
+      </p>
+    {{- end }}
+
+    {{- if site.Params.footer.showThemeAttribution | default true }}
+      <p class="text-xs text-neutral-500 dark:text-neutral-400">
+        {{ i18n "footer.powered_by" (dict "Hugo" "<a class=\"hover:underline hover:decoration-primary-400 hover:text-primary-500\" href=\"https://gohugo.io/\" target=\"_blank\" rel=\"noopener noreferrer\">Hugo</a>" "Theme" "<a class=\"hover:underline hover:decoration-primary-400 hover:text-primary-500\" href=\"https://github.com/nunocoracao/blowfish\" target=\"_blank\" rel=\"noopener noreferrer\">Blowfish</a>") | safeHTML }}
+      </p>
+    {{- end }}
+  </div>
+</footer>

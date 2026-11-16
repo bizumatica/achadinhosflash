@@ -1,0 +1,107 @@
+{{- $links := dict
+  "whatsapp" (dict "url" "https://api.whatsapp.com/send?text=%s%%20%s" "title" "Compartilhar no WhatsApp" "icon" "whatsapp")
+  "telegram" (dict "url" "https://t.me/share/url?url=%s&text=%s" "title" "Compartilhar no Telegram" "icon" "telegram")
+  "pinterest" (dict "url" "https://pinterest.com/pin/create/button/?url=%s&description=%s" "title" "Salvar no Pinterest" "icon" "pinterest")
+  "twitter" (dict "url" "https://twitter.com/intent/tweet/?url=%s&text=%s" "title" "Compartilhar no X" "icon" "x-twitter")
+  "facebook" (dict "url" "https://www.facebook.com/sharer/sharer.php?u=%s" "title" "Compartilhar no Facebook" "icon" "facebook")
+  "email" (dict "url" "mailto:?body=%s&subject=%s" "title" "Enviar por E-mail" "icon" "email")
+-}}
+
+{{- $enabledLinks := site.Params.article.sharingLinks -}}
+{{- if isset .Params "sharinglinks" -}}
+  {{- $enabledLinks = .Params.sharingLinks -}}
+{{- end -}}
+
+{{- if $enabledLinks }}
+  <section class="flex flex-wrap items-center gap-2 pt-6 pb-4 print:hidden" aria-label="Compartilhar oferta">
+    {{- $permalink := .Permalink -}}
+    {{- $title := .Title -}}
+
+    {{- range $enabledLinks }}
+      {{- $data := index $links . -}}
+      {{- if $data }}
+        {{- $href := "" -}}
+        {{- if or (eq . "whatsapp") (eq . "email") }}
+          {{- $href = printf $data.url ($title | urlquery) ($permalink | urlquery) -}}
+        {{- else if eq . "facebook" }}
+          {{- $href = printf $data.url ($permalink | urlquery) -}}
+        {{- else }}
+          {{- $href = printf $data.url ($permalink | urlquery) ($title | urlquery) -}}
+        {{- end }}
+
+        <a
+          class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 hover:bg-primary-500 hover:text-white dark:hover:bg-primary-500 transition-colors"
+          href="{{ $href | safeURL }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="{{ $data.title }}"
+          aria-label="{{ $data.title }}"
+        >
+          <span class="w-4 h-4 inline-block" aria-hidden="true">
+            {{- partial "icon.html" $data.icon -}}
+          </span>
+        </a>
+      {{- end }}
+    {{- end }}
+
+    <button
+      type="button"
+      data-copy-url="{{ $permalink }}"
+      data-default-label="Copiar link"
+      onclick="window.copiarLinkOferta && window.copiarLinkOferta(this)"
+      title="Copiar link da oferta"
+      aria-label="Copiar link da oferta"
+      class="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg text-sm font-medium bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 hover:bg-primary-500 hover:text-white dark:hover:bg-primary-500 transition-colors cursor-pointer"
+    >
+      <span class="w-4 h-4 inline-block" aria-hidden="true">
+        {{- partial "icon.html" "link" -}}
+      </span>
+      <span class="copy-label" aria-live="polite">Copiar link</span>
+    </button>
+  </section>
+
+  <script>
+    if (!window.copiarLinkOferta) {
+      window.copiarLinkOferta = function (btn) {
+        const url = btn.getAttribute('data-copy-url');
+        const label = btn.querySelector('.copy-label');
+        const defaultText = btn.getAttribute('data-default-label') || 'Copiar link';
+        if (!url || !label) return;
+
+        const confirmar = () => {
+          if (btn._copyTimer) clearTimeout(btn._copyTimer);
+          label.textContent = 'Copiado!';
+          btn.style.backgroundColor = '#16a34a';
+          btn.style.color = '#ffffff';
+
+          btn._copyTimer = setTimeout(() => {
+            label.textContent = defaultText;
+            btn.style.backgroundColor = '';
+            btn.style.color = '';
+          }, 2000);
+        };
+
+        const fallbackCopy = () => {
+          const input = document.createElement('textarea');
+          input.value = url;
+          input.setAttribute('readonly', '');
+          input.style.position = 'fixed';
+          input.style.opacity = '0';
+          document.body.appendChild(input);
+          input.select();
+          try {
+            document.execCommand('copy');
+            confirmar();
+          } catch (_) {}
+          document.body.removeChild(input);
+        };
+
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(url).then(confirmar).catch(fallbackCopy);
+        } else {
+          fallbackCopy();
+        }
+      };
+    }
+  </script>
+{{- end -}}

@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://achadinhosflash.net.br/sitemap.xml
