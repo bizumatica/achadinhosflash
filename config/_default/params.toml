@@ -1,3 +1,4 @@
+mainSections = ["ofertas"]
 logo = "img/logo.svg"
 colorScheme = "slate"
 defaultAppearance = "light"

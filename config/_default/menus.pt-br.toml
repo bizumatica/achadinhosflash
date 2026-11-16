@@ -1,14 +1,76 @@
+# ==========================================
+# MENU PRINCIPAL (CABEÇALHO)
+# ==========================================
 [[main]]
   name = "Todas as Ofertas"
-  pageRef = "ofertas"
+  pageRef = "/ofertas"
   weight = 10
 
 [[main]]
   name = "Lojas"
-  pageRef = "stores"
+  pageRef = "/stores"
   weight = 20
 
 [[main]]
   name = "Categorias"
-  pageRef = "categories"
+  pageRef = "/categories"
   weight = 30
+
+# ==========================================
+# MENU DO RODAPÉ — PÁGINAS INSTITUCIONAIS
+# ==========================================
+[[footer]]
+  name = "Sobre"
+  pageRef = "/sobre"
+  weight = 10
+
+[[footer]]
+  name = "Política de Privacidade"
+  pageRef = "/privacidade"
+  weight = 20
+
+[[footer]]
+  name = "Termos e Aviso de Afiliados"
+  pageRef = "/termos"
+  weight = 30
+
+# ==========================================
+# MENU DO RODAPÉ — REDES SOCIAIS OFICIAIS
+# (Descomente cada bloco assim que o perfil estiver ativo e substitua pela URL real)
+# ==========================================
+
+# [[footer]]
+#   pre = "instagram"
+#   name = "Instagram"
+#   title = "Siga o Achadinhos Flash no Instagram"
+#   url = "https://www.instagram.com/SEU_USUARIO/"
+#   weight = 100
+#   [footer.params]
+#     rel = "noopener noreferrer"
+
+# [[footer]]
+#   pre = "pinterest"
+#   name = "Pinterest"
+#   title = "Inspirações e Achadinhos no Pinterest"
+#   url = "https://br.pinterest.com/SEU_USUARIO/"
+#   weight = 110
+#   [footer.params]
+#     rel = "noopener noreferrer"
+
+# [[footer]]
+#   pre = "tiktok"
+#   name = "TikTok"
+#   title = "Vídeos rápidos no TikTok"
+#   url = "https://www.tiktok.com/@SEU_USUARIO"
+#   weight = 120
+#   [footer.params]
+#     rel = "noopener noreferrer"
+
+# [[footer]]
+#   pre = "whatsapp"
+#   name = "Canal WhatsApp"
+#   title = "Receba alertas no Canal do WhatsApp"
+#   url = "https://whatsapp.com/channel/SEU_CODIGO"
+#   weight = 130
+#   [footer.params]
+#     rel = "noopener noreferrer"

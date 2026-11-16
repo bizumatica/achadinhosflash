@@ -1,33 +1,69 @@
-# If you prefer the allow list template instead of the deny list, see community template:
-# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
-#
-# Binaries for programs and plugins
+# ==========================================
+# HUGO & CLOUDFLARE PAGES
+# ==========================================
+# Diretório de saída gerado no build (recriado pelo Cloudflare Pages)
+public/
+
+# Arquivo de trava de build local do Hugo
+.hugo_build.lock
+
+# Nota: NÃO ignore 'resources/_gen/'. Versionar o cache de imagens WebP
+# acelera drasticamente os deploys no Cloudflare Pages.
+
+# ==========================================
+# SEGREDOS E VARIÁVEIS DE AMBIENTE
+# ==========================================
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ==========================================
+# ARQUIVOS TEMPORÁRIOS E GARIMPO LOCAL
+# ==========================================
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+*.log
+
+# ==========================================
+# GO MODULES & BINÁRIOS (HUGO MODULES)
+# ==========================================
 *.exe
 *.exe~
 *.dll
 *.so
 *.dylib
-
-# Test binary, built with `go test -c`
 *.test
-
-# Code coverage profiles and other test artifacts
 *.out
 coverage.*
 !coverage.go
 *.coverprofile
 profile.cov
-
-# Dependency directories (remove the comment below to include it)
-# vendor/
-
-# Go workspace file
 go.work
 go.work.sum
+# vendor/
 
-# env file
-.env
+# ==========================================
+# DEPENDÊNCIAS AUXILIARES E SISTEMAS OPERACIONAIS
+# ==========================================
+node_modules/
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+Desktop.ini
+.directory
 
-# Editor/IDE
-# .idea/
-# .vscode/
+# ==========================================
+# EDITORES E IDEs
+# ==========================================
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
