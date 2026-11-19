@@ -4,12 +4,10 @@ colorScheme = "slate"
 defaultAppearance = "light"
 autoSwitchAppearance = false
 customCSS = ["css/custom.css"]
+description = "As melhores promoções relâmpago, cupons verificados e achadinhos das maiores lojas online."
 
 [page404]
   enableQuotes = false
-
-description = "As melhores promoções relâmpago, cupons verificados e achadinhos das maiores lojas online."
-author = { name = "Equipe Achadinhos Flash" }
 
 [header]
   layout = "basic"
@@ -40,3 +38,15 @@ author = { name = "Equipe Achadinhos Flash" }
   showAuthor = false
   showTaxonomies = true
   sharingLinks = ["whatsapp", "telegram", "pinterest"]
+
+[author]
+  name = "Achadinhos Flash"
+  headline = "Curadoria diária de ofertas relâmpago e cupons verificados"
+  bio = "Seleção independente das melhores promoções e descontos da internet."
+  links = [
+    { instagram = "https://www.instagram.com/portalachadinhosflash/" },
+    { pinterest = "https://br.pinterest.com/achadinhosflashoficial/" },
+    { tiktok = "https://www.tiktok.com/@portalachadinhosflash" },
+    { telegram = "https://t.me/achadinhosflashoficial" },
+    { whatsapp = "https://whatsapp.com/channel/0029Vb9TtwzJJhzfvg0gsM3m" }
+  ]

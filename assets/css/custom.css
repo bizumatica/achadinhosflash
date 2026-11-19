@@ -33,3 +33,34 @@
 .btn-affiliate {
   @apply block w-full sm:w-max px-8 py-4 mt-6 mx-auto sm:mx-0 text-lg font-bold text-white bg-primary-600 hover:bg-primary-700 active:scale-95 rounded-xl shadow-lg transition-transform text-center no-underline !important;
 }
+
+/* Rodapé: espaçamento no desktop e centralização completa no mobile */
+#site-footer nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.75rem;
+  align-items: center;
+}
+
+#site-footer nav ul li {
+  margin: 0 !important;
+}
+
+@media (max-width: 639px) {
+  /* Centraliza o menu de páginas institucionais no mobile */
+  #site-footer nav ul {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding-left: 0;
+  }
+
+  /* Centraliza a fileira de ícones sociais no mobile */
+  #site-footer div:has(> a[href*="instagram.com"]),
+  #site-footer .flex.flex-wrap {
+    justify-content: center !important;
+    width: 100%;
+  }
+}
